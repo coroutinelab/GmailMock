@@ -43,7 +43,7 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.logging.interceptor)
-    implementation(libs.kotlinx.serialization.json)
+    api(libs.kotlinx.serialization.json)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
 
     implementation(libs.hilt.android)

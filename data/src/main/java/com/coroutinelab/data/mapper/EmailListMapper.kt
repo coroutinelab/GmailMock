@@ -11,7 +11,9 @@ class EmailListMapper @Inject constructor(): ResultMapper<List<EmailListItemDto>
         it.id != null && it.payload.from != null
     }.map {
         it.toModel()
-    }
+    }.sortedBy {
+        it.date
+    }.reversed()
 
     private fun EmailListItemDto.toModel() = EmailListItemModel(
         id = id!!,

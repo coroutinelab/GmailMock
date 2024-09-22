@@ -1,4 +1,4 @@
-package com.coroutinelab.gmailmock.ui.theme
+package com.coroutinelab.coreui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="txt_search">Search in email</string>
+    <string name="txt_unsubscribe">Unsubscribe</string>
+    <string name="txt_to_me">to me </string>
+    <string name="txt_reply">Reply</string>
+</resources>
