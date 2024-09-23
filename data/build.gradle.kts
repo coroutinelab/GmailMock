@@ -38,9 +38,6 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":core"))
-
-    testImplementation(libs.junit)
-
     implementation(libs.retrofit)
     implementation(libs.logging.interceptor)
     api(libs.kotlinx.serialization.json)
@@ -48,6 +45,8 @@ dependencies {
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+    testImplementation(libs.junit)
 }
 
 kapt {
