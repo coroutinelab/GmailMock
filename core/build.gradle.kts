@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("de.mannodermaus.android-junit5") version "1.11.0.0"
 }
 
 android {
@@ -30,14 +31,17 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    configurations {
+        create("testDependencies"){
+            extendsFrom(configurations.testImplementation.get())
+        }
+    }
 }
 
-dependencies {
 
+dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }

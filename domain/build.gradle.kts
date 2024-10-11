@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.android.junit)
 }
 
 android {
@@ -32,12 +33,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    sourceSets {
+        getByName("main").java.srcDirs("src/main/java")
+        getByName("test").java.srcDirs("src/test/java")
+        getByName("androidTest").java.srcDirs("src/androidTest/java")
+    }
+
 }
 
 dependencies {
     implementation(project(":core"))
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
     kapt(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
+
+    testImplementation(libs.bundles.unittest)
+    implementation(libs.kotlin.reflect)
 }

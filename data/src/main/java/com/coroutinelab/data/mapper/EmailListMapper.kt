@@ -6,14 +6,16 @@ import com.coroutinelab.data.dto.emaillist.EmailListItemDto
 import com.coroutinelab.domain.model.emaillist.EmailListItemModel
 import javax.inject.Inject
 
-class EmailListMapper @Inject constructor(): ResultMapper<List<EmailListItemDto>, List<EmailListItemModel>> {
-    override fun map(input: List<EmailListItemDto>): List<EmailListItemModel>  = input.filter {
-        it.id != null && it.payload.from != null
-    }.map {
-        it.toModel()
-    }.sortedBy {
-        it.date
-    }.reversed()
+class EmailListMapper @Inject constructor() :
+    ResultMapper<List<EmailListItemDto>, List<EmailListItemModel>> {
+    override fun map(input: List<EmailListItemDto>): List<EmailListItemModel> =
+        input.filter {
+            it.id != null && it.payload.from != null
+        }.map {
+            it.toModel()
+        }.sortedBy {
+            it.date
+        }.reversed()
 
     private fun EmailListItemDto.toModel() = EmailListItemModel(
         id = id!!,

@@ -20,44 +20,45 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.coroutinelab.coreui.component.EmailDetailsBottomSection
 import com.coroutinelab.coreui.component.EmailDetailsSenderInfo
 import com.coroutinelab.coreui.component.EmailDetailsSubject
 import com.coroutinelab.coreui.component.FullScreenError
 import com.coroutinelab.coreui.component.LinearFullScreenProgress
 import com.coroutinelab.domain.model.emaildetails.EmailDetailsModel
-import com.coroutinelab.presentation.emaildetails.mvi.EmailDetailsViewModel
+import com.coroutinelab.presentation.emaildetails.mvi.EmailDetailsContract
 
 @Composable
 fun EmailDetailsScreen(
-    viewModel: EmailDetailsViewModel = hiltViewModel(),
     from: String,
     profileImage: String?,
     subject: String,
-    isPromotional: Boolean
+    isPromotional: Boolean,
+    state: EmailDetailsContract.UIState
 ){
-    val states = viewModel.state.collectAsState()
-
-    if (states.value.isLoading) {
-        LinearFullScreenProgress()
+    if (state.isLoading) {
+        LinearFullScreenProgress(modifier = Modifier.semantics {
+            contentDescription = "Loading"
+        })
     }
 
-    if (states.value.isError) {
+    if (state.isError) {
         FullScreenError(errorMessage = "Something went wrong")
     }
 
-    states.value.details?.let {
+    state.details?.let {
         EmailDetailsUi(from, profileImage, subject, isPromotional, it)
     }
 }
@@ -83,7 +84,7 @@ fun EmailDetailsUi(
                 }
             }
             settings.javaScriptEnabled = true
-            loadData(model.htmlBody ?: model.plainBody, "text/html", "UTF-8")
+            loadData(model.htmlBody, "text/html", "UTF-8")
         }
     }
 
@@ -109,6 +110,7 @@ fun EmailDetailsUi(
 
                     Icon(
                         imageVector = Icons.Outlined.Star,
+                        tint = if (model.isStarred) Color(0xFFFFD700) else Color(0x706B6B6E),
                         contentDescription = null,
                         modifier = Modifier.size(24.dp)
                     )

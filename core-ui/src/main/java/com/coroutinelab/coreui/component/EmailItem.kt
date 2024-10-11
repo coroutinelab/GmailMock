@@ -115,7 +115,7 @@ fun EmailItem(
 
         Icon(
             Icons.Default.Star,
-            contentDescription = null,
+            contentDescription = "markedImportant",
             tint = if (isStarred) Color(0xFFFFD700) else Color(0x706B6B6E),
             modifier =
             Modifier
@@ -124,6 +124,7 @@ fun EmailItem(
                     end.linkTo(parent.end)
                     top.linkTo(time.bottom, margin = 4.dp)
                 }
+
         )
     }
 }

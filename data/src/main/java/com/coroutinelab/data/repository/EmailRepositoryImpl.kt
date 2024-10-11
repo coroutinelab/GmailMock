@@ -2,19 +2,12 @@ package com.coroutinelab.data.repository
 
 import com.coroutinelab.core.error.Failure
 import com.coroutinelab.core.functional.Either
-import com.coroutinelab.data.dto.emaildetails.Body
-import com.coroutinelab.data.dto.emaildetails.EmailDetailsDto
-import com.coroutinelab.data.dto.emaildetails.SenderInfo
-import com.coroutinelab.data.dto.emaillist.EmailListItemDto
-import com.coroutinelab.data.dto.emaillist.Payload
 import com.coroutinelab.data.mapper.EmailDetailsMapper
 import com.coroutinelab.data.mapper.EmailListMapper
 import com.coroutinelab.data.remote.api.ApiService
 import com.coroutinelab.data.remote.handler.safeApiCall
 import com.coroutinelab.domain.model.emaillist.EmailListItemModel
 import com.coroutinelab.domain.respository.EmailRepository
-import kotlinx.coroutines.runBlocking
-import retrofit2.Response
 import javax.inject.Inject
 
 class EmailRepositoryImpl @Inject constructor(

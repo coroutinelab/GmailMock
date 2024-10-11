@@ -83,7 +83,7 @@ fun EmailDetailsSenderInfo(
             ) {
                 Icon(
                     imageVector = Icons.Outlined.Mood,
-                    contentDescription = null,
+                    contentDescription = "React with emoji",
                     modifier =
                     Modifier
                         .size(24.dp)

@@ -29,7 +29,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.3"
+        kotlinCompilerExtensionVersion = "1.5.7"
     }
 
     compileOptions {
@@ -53,7 +53,6 @@ dependencies {
     implementation(libs.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
     debugApi(libs.androidx.ui.tooling)
     api(libs.glide)
     implementation(libs.androidx.constraintlayout.compose)

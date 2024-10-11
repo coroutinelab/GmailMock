@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coroutinelab.core.functional.fold
 import com.coroutinelab.coreui.functional.stateInWhileActive
-import com.coroutinelab.domain.usecase.EmailListUsecase
+import com.coroutinelab.domain.usecase.EmailListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EmailListViewModel @Inject constructor(
-    private val getEmailsUseCase: EmailListUsecase
+    private val getEmailsUseCase: EmailListUseCase
 ) : ViewModel(), EmailListContract {
     private val mutableUIState: MutableStateFlow<EmailListContract.EmailListState> =
         MutableStateFlow(EmailListContract.EmailListState.Loading)
