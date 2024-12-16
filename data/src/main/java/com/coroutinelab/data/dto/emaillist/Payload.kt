@@ -1,6 +1,5 @@
 package com.coroutinelab.data.dto.emaillist
 
-
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

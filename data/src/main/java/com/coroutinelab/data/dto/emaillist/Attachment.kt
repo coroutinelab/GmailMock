@@ -1,16 +1,14 @@
-package com.coroutinelab.data.dto.emaildetails
+package com.coroutinelab.data.dto.emaillist
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class Attachment(
-    @SerialName("downloadUrl")
-    val downloadUrl: String?,
     @SerialName("filename")
-    val filename: String?,
+    val filename: String? = null,
     @SerialName("mimeType")
-    val mimeType: String?,
+    val mimeType: String? = null,
     @SerialName("size")
-    val size: Long?
+    val size: Int? = null
 )

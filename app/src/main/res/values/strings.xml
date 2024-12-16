@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GmailMock</string>
+    <string name="txt_compose">Compose</string>
+    <string name="accessibility_compose">Compose Email</string>
+    <string name="accessibility_email"> Email</string>
+    <string name="accessibility_video"> Video Call</string>
+    <string name="accessibility_bottombar">BottomBar</string>
 </resources>

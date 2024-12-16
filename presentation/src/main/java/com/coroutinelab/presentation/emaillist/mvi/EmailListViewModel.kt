@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coroutinelab.core.functional.fold
 import com.coroutinelab.coreui.functional.stateInWhileActive
-import com.coroutinelab.domain.usecase.EmailListUseCase
+import com.coroutinelab.domain.usecase.emaillist.EmailListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,13 +27,13 @@ class EmailListViewModel @Inject constructor(
 
     override val state: StateFlow<EmailListContract.EmailListState>
         get() = mutableUIState
-            .stateInWhileActive(viewModelScope, EmailListContract.EmailListState.Loading){
+            .stateInWhileActive(viewModelScope, EmailListContract.EmailListState.Loading) {
                 event(EmailListContract.EmailListEvent.LoadEmailList)
             }
     override val effect: SharedFlow<EmailListContract.EmailListEffect>
         get() = mutableSharedFlow.asSharedFlow()
 
-    override fun event(event: EmailListContract.EmailListEvent){
+    override fun event(event: EmailListContract.EmailListEvent) {
         when (event) {
             is EmailListContract.EmailListEvent.LoadEmailList -> {
                 loadEmail()
@@ -43,14 +43,13 @@ class EmailListViewModel @Inject constructor(
                 viewModelScope.launch {
                     mutableSharedFlow.emit(EmailListContract.EmailListEffect.NavigateToEmailDetails(event.model))
                 }
-
         }
     }
 
     private fun loadEmail() {
         viewModelScope.launch {
             getEmailsUseCase().fold(
-                { updateState( EmailListContract.EmailListState.Error(it)) },
+                { updateState(EmailListContract.EmailListState.Error(it)) },
                 { updateState(EmailListContract.EmailListState.Success(emailList = it)) }
             )
         }
@@ -59,5 +58,4 @@ class EmailListViewModel @Inject constructor(
     private fun updateState(state: EmailListContract.EmailListState) {
         mutableUIState.update { state }
     }
-
 }

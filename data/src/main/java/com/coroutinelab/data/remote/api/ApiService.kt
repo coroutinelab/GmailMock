@@ -7,8 +7,8 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET("api/v1/emaillist")
-    suspend fun getEmailList() : Response<ArrayList<EmailListItemDto>>
+    suspend fun getEmailList(): Response<ArrayList<EmailListItemDto>>
 
     @GET("api/v1/emaildetails")
-    suspend fun getEmailDetail() : Response<ArrayList<EmailDetailsDto>>
+    suspend fun getEmailDetail(): Response<ArrayList<EmailDetailsDto>>
 }

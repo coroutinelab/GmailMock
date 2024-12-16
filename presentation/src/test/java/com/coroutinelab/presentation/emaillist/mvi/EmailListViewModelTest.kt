@@ -3,7 +3,7 @@ package com.coroutinelab.presentation.emaillist.mvi
 import com.coroutinelab.core.error.Failure
 import com.coroutinelab.core.functional.Either
 import com.coroutinelab.domain.model.emaillist.EmailListItemModel
-import com.coroutinelab.domain.usecase.EmailListUseCase
+import com.coroutinelab.domain.usecase.emaillist.EmailListUseCase
 import io.kotest.core.spec.style.FeatureSpec
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery

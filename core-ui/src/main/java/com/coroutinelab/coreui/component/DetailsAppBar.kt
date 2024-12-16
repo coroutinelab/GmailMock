@@ -27,10 +27,10 @@ import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.coroutinelab.coreui.content.getDropDownMenuList
+import com.coroutinelab.coreui.theme.Dimensions
 
 @Composable
 fun DetailsAppBar(
@@ -39,7 +39,7 @@ fun DetailsAppBar(
 ) {
     val density = LocalDensity.current
     var isMenuExpanded by remember { mutableStateOf(false) }
-    var offsetX by remember { mutableStateOf(0.dp) }
+    var offsetX by remember { mutableStateOf(Dimensions.none) }
     var parentWidth by remember { mutableIntStateOf(0) }
 
     Row(
@@ -61,26 +61,25 @@ fun DetailsAppBar(
         IconButton(onClick = { }) {
             Icon(Icons.Default.Mail, contentDescription = "New Mail")
         }
-        IconButton(onClick = {  isMenuExpanded = !isMenuExpanded }) {
+        IconButton(onClick = { isMenuExpanded = !isMenuExpanded }) {
             Icon(Icons.Default.MoreVert, contentDescription = "More Options")
         }
 
         DropdownMenu(
             modifier = Modifier.onPlaced {
                 val menuWidth = parentWidth - it.size.width
-                offsetX = with(density) { menuWidth.toDp()}
+                offsetX = with(density) { menuWidth.toDp() }
             },
             expanded = isMenuExpanded,
             onDismissRequest = { isMenuExpanded = false },
-            offset = DpOffset(offsetX, 0.dp),
+            offset = DpOffset(offsetX, Dimensions.none)
         ) {
-
             getDropDownMenuList().forEach {
                 DropdownMenuItem(
                     text = {
                         Text(it.title)
                     },
-                    onClick = { it.onClick() },
+                    onClick = { it.onClick() }
                 )
             }
         }
@@ -94,5 +93,3 @@ fun DetailsAppBarPreview() {
     val navController = rememberNavController()
     DetailsAppBar(navController = navController)
 }
-
-

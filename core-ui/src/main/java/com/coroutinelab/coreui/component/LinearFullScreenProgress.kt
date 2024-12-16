@@ -22,6 +22,6 @@ fun LinearFullScreenProgress(modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-fun LinearFullScreenProgressPreview (){
+fun LinearFullScreenProgressPreview() {
     LinearFullScreenProgress()
 }

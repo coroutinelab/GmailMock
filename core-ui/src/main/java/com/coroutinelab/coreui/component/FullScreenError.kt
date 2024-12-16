@@ -1,6 +1,5 @@
 package com.coroutinelab.coreui.component
 
-
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,14 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.coroutinelab.coreui.R
+import com.coroutinelab.coreui.theme.Dimensions
 
 @Composable
 fun FullScreenError(
     errorMessage: String,
     @DrawableRes errorMessageIcon: Int = R.drawable.alert_error_icon
-)  {
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -34,11 +33,11 @@ fun FullScreenError(
             painter = painterResource(errorMessageIcon),
             contentDescription = null,
             modifier = Modifier
-                .size(64.dp)
+                .size(Dimensions.dimen_64)
         )
 
         Text(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Dimensions.dimen_16),
             text = errorMessage,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.titleLarge
@@ -48,7 +47,7 @@ fun FullScreenError(
 
 @Preview
 @Composable
-fun FullScreenErrorPreview()  {
+fun FullScreenErrorPreview() {
     Surface {
         FullScreenError(
             errorMessage = "Lorem Ipsum",

@@ -1,6 +1,5 @@
 package com.coroutinelab.coreui.component
 
-
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -69,7 +68,7 @@ fun EmailDetailsSubject(
 
 @Preview
 @Composable
-fun EmailDetailsSubjectPreview (){
+fun EmailDetailsSubjectPreview() {
     Surface {
         EmailDetailsSubject(
             subjectText = "Important message ",

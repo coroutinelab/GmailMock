@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
     onTertiary = Color.White,
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
-    */
+     */
 )
 
 @Composable
@@ -55,7 +55,7 @@ fun GmailMockTheme(
         else -> LightColorScheme
     }
 
-    if(!view.isInEditMode){
+    if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = colorScheme.surface.toArgb()

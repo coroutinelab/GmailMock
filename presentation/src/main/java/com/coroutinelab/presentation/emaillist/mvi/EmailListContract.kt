@@ -7,7 +7,6 @@ import com.coroutinelab.domain.model.emaillist.EmailListItemModel
 interface EmailListContract :
     MVIContract<EmailListContract.EmailListState, EmailListContract.EmailListEffect, EmailListContract.EmailListEvent> {
 
-
     sealed class EmailListEvent {
         data object LoadEmailList : EmailListEvent()
 

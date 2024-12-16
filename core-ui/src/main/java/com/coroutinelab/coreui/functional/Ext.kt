@@ -24,7 +24,7 @@ fun <T> Flow<T>.stateInWhileActive(
     )
 }
 
-fun String.getInitials() : String {
+fun String.getInitials(): String {
     return split(" ")
         .mapNotNull { it.firstOrNull() ?.uppercase() }
         .joinToString("")
@@ -37,7 +37,7 @@ fun String.toFormattedDate(): String {
 
     return try {
         input.parse(this)?.let { output.format(it) }.orEmpty()
-    } catch (e:Exception){
-       ""
+    } catch (e: Exception) {
+        ""
     }
 }

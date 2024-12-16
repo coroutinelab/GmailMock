@@ -22,7 +22,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -39,7 +39,6 @@ android {
         getByName("test").java.srcDirs("src/test/java")
         getByName("androidTest").java.srcDirs("src/androidTest/java")
     }
-
 }
 
 dependencies {

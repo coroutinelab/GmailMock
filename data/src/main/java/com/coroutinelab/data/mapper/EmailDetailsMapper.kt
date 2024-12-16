@@ -12,10 +12,10 @@ import com.coroutinelab.domain.model.emaildetails.RecipientModel
 import com.coroutinelab.domain.model.emaildetails.SenderInfoModel
 import javax.inject.Inject
 
-class EmailDetailsMapper @Inject constructor(): ResultMapper<ArrayList<EmailDetailsDto>, EmailDetailsModel> {
-    override fun map(input: ArrayList<EmailDetailsDto>): EmailDetailsModel =  input.first().toEmailDetailsModel()
+class EmailDetailsMapper @Inject constructor() : ResultMapper<ArrayList<EmailDetailsDto>, EmailDetailsModel> {
+    override fun map(input: ArrayList<EmailDetailsDto>): EmailDetailsModel = input.first().toEmailDetailsModel()
 
-    private fun EmailDetailsDto.toEmailDetailsModel(): EmailDetailsModel{
+    private fun EmailDetailsDto.toEmailDetailsModel(): EmailDetailsModel {
         return EmailDetailsModel(
             id = id,
             from = payload.senderInfo.toSenderInfoModel(),

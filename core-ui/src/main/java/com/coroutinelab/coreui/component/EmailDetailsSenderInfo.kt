@@ -1,6 +1,5 @@
 package com.coroutinelab.coreui.component
 
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -22,9 +21,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coroutinelab.coreui.R
+import com.coroutinelab.coreui.theme.Dimensions
 
 @Composable
 fun EmailDetailsSenderInfo(
@@ -40,12 +39,12 @@ fun EmailDetailsSenderInfo(
         CircularProfileImage(
             modifier = Modifier,
             imageSource = profileImageUrl,
-            size = 32.dp
+            size = Dimensions.dimen_32
         )
         Column(
             modifier = Modifier
                 .weight(1f)
-                .padding(8.dp)
+                .padding(Dimensions.dimen_8)
         ) {
             Row(
                 verticalAlignment = Alignment.Bottom
@@ -78,28 +77,28 @@ fun EmailDetailsSenderInfo(
             IconButton(
                 onClick = {},
                 modifier = Modifier
-                    .padding(4.dp)
-                    .size(30.dp)
+                    .padding(Dimensions.dimen_4)
+                    .size(Dimensions.dimen_32)
             ) {
                 Icon(
                     imageVector = Icons.Outlined.Mood,
                     contentDescription = "React with emoji",
                     modifier =
                     Modifier
-                        .size(24.dp)
+                        .size(Dimensions.dimen_24)
                 )
             }
             IconButton(
                 onClick = {},
                 modifier = Modifier
-                    .padding(4.dp)
-                    .size(30.dp)
+                    .padding(Dimensions.dimen_4)
+                    .size(Dimensions.dimen_32)
                     .scale(scaleX = -1f, scaleY = 1f)
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Outlined.Shortcut,
                     contentDescription = null,
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(Dimensions.dimen_24)
                 )
             }
         } else {
@@ -111,21 +110,20 @@ fun EmailDetailsSenderInfo(
         }
         IconButton(
             onClick = {},
-            modifier = Modifier.size(30.dp)
+            modifier = Modifier.size(Dimensions.dimen_32)
         ) {
             Icon(
                 imageVector = Icons.Outlined.MoreVert,
                 contentDescription = null,
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(Dimensions.dimen_24)
             )
         }
     }
 }
 
-
 @Preview
 @Composable
-fun EmailDetailsSenderInfoPreview (){
+fun EmailDetailsSenderInfoPreview() {
     Surface {
         EmailDetailsSenderInfo(
             modifier = Modifier,
@@ -138,7 +136,7 @@ fun EmailDetailsSenderInfoPreview (){
 
 @Preview
 @Composable
-fun NonPromotionalEmailDetailsSenderInfoPreview (){
+fun NonPromotionalEmailDetailsSenderInfoPreview() {
     Surface {
         EmailDetailsSenderInfo(
             profileImageUrl = "https://i.pravatar.cc/250?img=5",

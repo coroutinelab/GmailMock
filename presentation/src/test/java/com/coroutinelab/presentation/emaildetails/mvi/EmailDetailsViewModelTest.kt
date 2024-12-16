@@ -4,7 +4,7 @@ import app.cash.turbine.test
 import com.coroutinelab.core.error.Failure
 import com.coroutinelab.core.functional.Either
 import com.coroutinelab.domain.model.emaildetails.EmailDetailsModel
-import com.coroutinelab.domain.usecase.EmailDetailsUseCase
+import com.coroutinelab.domain.usecase.emaildetails.EmailDetailsUseCase
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery

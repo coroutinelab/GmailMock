@@ -10,16 +10,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.coroutinelab.coreui.theme.Dimensions
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun CircularProfileImage(
     modifier: Modifier,
     imageSource: String,
-    size: Dp = 32.dp
+    size: Dp = Dimensions.dimen_32
 ) {
     GlideImage(
         model = imageSource,

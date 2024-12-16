@@ -20,7 +20,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -33,12 +33,11 @@ android {
     }
 
     configurations {
-        create("testDependencies"){
+        create("testDependencies") {
             extendsFrom(configurations.testImplementation.get())
         }
     }
 }
-
 
 dependencies {
     implementation(libs.androidx.core.ktx)

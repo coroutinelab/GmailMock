@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId = "com.coroutinelab.gmailmock"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -28,7 +28,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -54,7 +54,6 @@ android {
 
 dependencies {
     implementation(project(":presentation"))
-    implementation(project(":domain"))
     implementation(project(":data"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -76,7 +75,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.navigation.compose)
-
-
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.7.3")
+    api(libs.kotlinx.serialization.json)
+    debugImplementation(libs.androidx.ui.test.manifest)
 }

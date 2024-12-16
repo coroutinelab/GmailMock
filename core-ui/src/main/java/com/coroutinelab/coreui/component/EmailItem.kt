@@ -1,6 +1,5 @@
 package com.coroutinelab.coreui.component
 
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,10 +18,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.coroutinelab.coreui.theme.Dimensions
 
 @Composable
 fun EmailItem(
@@ -47,11 +46,11 @@ fun EmailItem(
                     start.linkTo(parent.start)
                 },
                 imageSource = profileImageUrl,
-                size = 32.dp
+                size = Dimensions.dimen_32
             )
         } ?: Box(
             modifier = Modifier
-                .size(32.dp)
+                .size(Dimensions.dimen_32)
                 .clip(CircleShape)
                 .background(color = Color.Green),
             contentAlignment = Alignment.Center
@@ -64,8 +63,8 @@ fun EmailItem(
             modifier =
             Modifier.constrainAs(from) {
                 top.linkTo(avatar.top)
-                start.linkTo(avatar.end, margin = 16.dp)
-                end.linkTo(time.start, margin = 8.dp)
+                start.linkTo(avatar.end, margin = Dimensions.dimen_16)
+                end.linkTo(time.start, margin = Dimensions.dimen_8)
                 width = Dimension.fillToConstraints
             },
             fontWeight = FontWeight.Bold,
@@ -79,7 +78,7 @@ fun EmailItem(
             Modifier.constrainAs(subject) {
                 top.linkTo(from.bottom)
                 start.linkTo(from.start)
-                end.linkTo(star.start, margin = 8.dp)
+                end.linkTo(star.start, margin = Dimensions.dimen_8)
                 width = Dimension.fillToConstraints
             },
             fontWeight = FontWeight.Medium,
@@ -91,9 +90,9 @@ fun EmailItem(
             text = emailSnippet,
             modifier =
             Modifier.constrainAs(snippet) {
-                top.linkTo(subject.bottom, margin = 4.dp)
+                top.linkTo(subject.bottom, margin = Dimensions.dimen_4)
                 start.linkTo(from.start)
-                end.linkTo(star.start, margin = 8.dp)
+                end.linkTo(star.start, margin = Dimensions.dimen_8)
                 width = Dimension.fillToConstraints
             },
             fontWeight = FontWeight.Normal,
@@ -119,16 +118,15 @@ fun EmailItem(
             tint = if (isStarred) Color(0xFFFFD700) else Color(0x706B6B6E),
             modifier =
             Modifier
-                .size(24.dp)
+                .size(Dimensions.dimen_24)
                 .constrainAs(star) {
                     end.linkTo(parent.end)
-                    top.linkTo(time.bottom, margin = 4.dp)
+                    top.linkTo(time.bottom, margin = Dimensions.dimen_4)
                 }
 
         )
     }
 }
-
 
 @Preview
 @Composable

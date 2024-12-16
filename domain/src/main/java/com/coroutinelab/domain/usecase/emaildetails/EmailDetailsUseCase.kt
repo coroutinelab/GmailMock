@@ -1,4 +1,4 @@
-package com.coroutinelab.domain.usecase
+package com.coroutinelab.domain.usecase.emaildetails
 
 import com.coroutinelab.domain.respository.EmailRepository
 import javax.inject.Inject

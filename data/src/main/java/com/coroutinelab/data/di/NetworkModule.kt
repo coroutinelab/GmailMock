@@ -18,27 +18,30 @@ import javax.inject.Singleton
 object NetworkModule {
 
     private val networkJson = Json { ignoreUnknownKeys = true }
+
     @Provides
     fun provideBaseUrl() = "https://66e4784bd2405277ed14692e.mockapi.io"
 
     @Singleton
     @Provides
-    fun provideHttpLoggingInterceptor() = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
-    }
+    fun provideHttpLoggingInterceptor() =
+        HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
 
     @Singleton
     @Provides
     fun provideRetrofit(
-        url:String,
+        url: String,
         loggingInterceptor: HttpLoggingInterceptor
-    ): Retrofit  =  Retrofit.Builder()
-        .baseUrl(url)
-        .addConverterFactory(networkJson.asConverterFactory("application/json".toMediaType()))
-        .client(OkHttpClient.Builder().addInterceptor(loggingInterceptor).build())
-        .build()
+    ): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(networkJson.asConverterFactory("application/json".toMediaType()))
+            .client(OkHttpClient.Builder().addInterceptor(loggingInterceptor).build())
+            .build()
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit) : ApiService = retrofit.create(ApiService::class.java)
+    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 }

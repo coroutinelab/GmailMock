@@ -4,10 +4,10 @@ import com.coroutinelab.coreui.mvi.MVIContract
 import com.coroutinelab.domain.model.emaildetails.EmailDetailsModel
 
 interface EmailDetailsContract : MVIContract<
-        EmailDetailsContract.UIState,
-        EmailDetailsContract.EmailDetailsEffect,
-        EmailDetailsContract.EmailDetailsEvent
-        > {
+    EmailDetailsContract.UIState,
+    EmailDetailsContract.EmailDetailsEffect,
+    EmailDetailsContract.EmailDetailsEvent
+    > {
     data class UIState(
         val details: EmailDetailsModel? = null,
         val isLoading: Boolean = true,

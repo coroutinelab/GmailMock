@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coroutinelab.core.functional.fold
 import com.coroutinelab.coreui.functional.stateInWhileActive
-import com.coroutinelab.domain.usecase.EmailDetailsUseCase
+import com.coroutinelab.domain.usecase.emaildetails.EmailDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class EmailDetailsViewModel @Inject constructor(
     private val detailsUseCase: EmailDetailsUseCase
-): ViewModel() , EmailDetailsContract {
+) : ViewModel(), EmailDetailsContract {
 
     private val mutableUIState: MutableStateFlow<EmailDetailsContract.UIState> =
         MutableStateFlow(EmailDetailsContract.UIState())
@@ -27,7 +27,7 @@ class EmailDetailsViewModel @Inject constructor(
         MutableSharedFlow()
 
     override val state: StateFlow<EmailDetailsContract.UIState>
-        get() = mutableUIState.stateInWhileActive(viewModelScope, EmailDetailsContract.UIState()){
+        get() = mutableUIState.stateInWhileActive(viewModelScope, EmailDetailsContract.UIState()) {
             event(EmailDetailsContract.EmailDetailsEvent.LoadEmailDetails)
         }
     override val effect: SharedFlow<EmailDetailsContract.EmailDetailsEffect>
@@ -59,20 +59,12 @@ class EmailDetailsViewModel @Inject constructor(
                         state.copy(details = null, isLoading = false, isError = true)
                     }
                 },
-                { mutableUIState.update { state ->
-                    state.copy(details = it, isLoading = false)
-                }}
+                {
+                    mutableUIState.update { state ->
+                        state.copy(details = it, isLoading = false)
+                    }
+                }
             )
         }
     }
-
 }
-
-
-
-
-
-
-
-
-
